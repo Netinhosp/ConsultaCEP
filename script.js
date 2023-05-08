@@ -1,18 +1,3 @@
-/* 1* Forma de consumir uma API - then = Então..., catch = se houver error, finally = executa independente de td.
-var consultaCEP = fetch('https://viacep.com.br/ws/56700000/json/')
-  .then(resposta => resposta.json())
-  .then(r => {
-    if(r.erro) {
-      throw Error('Esse cep não existe!')
-    } else
-      console.log(r)})
-  .catch(erro => console.log(erro))
-  .finally(mensagem => console.log('Processamento concluído'));
-
-console.log(consultaCEP);
-*/
-
-/* 2* Forma de consumir uma API  */
 async function buscaEndereco(cep) {
   const mensagemErro = document.querySelector('#erro');
   mensagemErro.innerHTML = "";
@@ -40,13 +25,6 @@ async function buscaEndereco(cep) {
     console.log(erro);
   }
 };
-
-/* Criando um array de ceps e atraves da function map, executando cada um deles na function buscaEndereco()
-let ceps = ['56700000', '01001000'];
-let conjuntoCeps = ceps.map(valores => buscaEndereco(valores));
-
-Promise.all(conjuntoCeps).then(respostas => console.log(respostas));
-*/
 
 const cep = document.querySelector('#cep');
 cep.addEventListener("focusout", () => console.log(buscaEndereco(cep.value)))
